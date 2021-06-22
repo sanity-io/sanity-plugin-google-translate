@@ -4,6 +4,7 @@ import { TranslationInput } from './TranslateInput';
 export type Locale = {
   id: string;
   title: string;
+  isDefault?: boolean
 };
 
 export type InputOptions = {
@@ -18,12 +19,18 @@ export const localizeInput = (options: InputOptions) => {
   return {
     type: 'object',
     name,
-    fields: languages.map(l =>
-      Object.assign({}, type, {
-        name: l.id,
-        title: l.title,
+    fields: languages
+      .sort((a, b) => {
+        if (a.isDefault === true) return -1
+        if (b.isDefault === true) return 1
+        return 0;
       })
-    ),
+      .map(l =>
+        Object.assign({}, type, {
+          name: l.id,
+          title: l.title,
+        })
+      ),
     inputComponent: (props: any) => (
       <TranslationInput {...props} apiKey={options.apiKey} />
     ),
