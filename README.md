@@ -8,7 +8,7 @@ This plugin lets you connect Sanity document fields to Google Cloud Translate AP
 ## Usage
 
 ```
-nmp install sanity-plugin-google-translate
+npm install sanity-plugin-google-translate
 ```
 
 Somewhere in your studio you should define a list of the languages you want to support. One of these should be marked as the default language. This will be the base language editors write in. The `id` field should correspond to the [language identifiers](https://cloud.google.com/translate/docs/languages) Google use.
