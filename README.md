@@ -100,7 +100,7 @@ Here is an example of how you can localize portable text through Google Translat
 const richText = {
   type: "array",
   name: "bodyText",
-  of: [{ type: "block" }, { type: "image" }, { type: "tweetEmbed" }],
+  of: [{ type: "block" }, { type: "image" }],
 };
 
 const localizedBody = localizeInput({
