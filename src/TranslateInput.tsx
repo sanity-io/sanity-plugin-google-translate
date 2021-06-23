@@ -9,9 +9,9 @@ import {
   ObjectSchemaTypeWithOptions,
   BaseSchemaType,
 } from '@sanity/types';
+import blockTools from '@sanity/block-tools';
 
 const blocksToHtml = require('@sanity/block-content-to-html');
-import blockTools from '@sanity/block-tools';
 
 const serializers = { types: {} };
 
@@ -206,7 +206,7 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
   return (
     <Fieldset
       level={props.level}
-      legend={type.title || ""}
+      legend={type.title || ''}
       description={type.description}
       markers={childMarkers}
       presence={childPresence}

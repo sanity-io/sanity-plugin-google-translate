@@ -1,6 +1,14 @@
-declare module "@sanity/form-builder/PatchEvent" {
-  import { PatchEvent, set, unset, setIfMissing, insert, inc, dec } from "../node_modules/@sanity/form-builder/lib/PatchEvent"
-  export { PatchEvent, set, unset, setIfMissing, insert, inc, dec }; 
+declare module '@sanity/form-builder/PatchEvent' {
+  import {
+    PatchEvent,
+    set,
+    unset,
+    setIfMissing,
+    insert,
+    inc,
+    dec,
+  } from '../node_modules/@sanity/form-builder/lib/PatchEvent';
+  export { PatchEvent, set, unset, setIfMissing, insert, inc, dec };
 }
 
 declare module 'part:@sanity/components/fieldsets/default' {

@@ -4,7 +4,7 @@ import { TranslationInput } from './TranslateInput';
 export type Locale = {
   id: string;
   title: string;
-  isDefault?: boolean
+  isDefault?: boolean;
 };
 
 export type InputOptions = {
@@ -21,8 +21,8 @@ export const localizeInput = (options: InputOptions) => {
     name,
     fields: languages
       .sort((a, b) => {
-        if (a.isDefault === true) return -1
-        if (b.isDefault === true) return 1
+        if (a.isDefault === true) return -1;
+        if (b.isDefault === true) return 1;
         return 0;
       })
       .map(l =>

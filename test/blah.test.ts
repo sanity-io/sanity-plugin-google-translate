@@ -1,5 +1,5 @@
 describe('blah', () => {
   it('works', () => {
-    expect(true)
+    expect(true);
   });
 });
