@@ -1,8 +1,8 @@
 # Sanity + Google Translate = 🤩
 
-This plugin lets you connect Sanity document fields to Google Cloud Translate API, giving you instant machine translations for 108 languages and counting!
+This plugin lets you connect Sanity document fields to Google Cloud Translate API, giving you instant machine translations for 108 languages and counting! Enable it for all of them! ...or just the ones you need.
 
-![google translate demo](https://user-images.githubusercontent.com/38528/123012822-d00cc980-d377-11eb-9641-57eb0c521616.gif)
+![longer demo](https://user-images.githubusercontent.com/38528/123015423-33e5c100-d37d-11eb-9204-809cb01e82e0.gif)
 
 
 ## Usage
@@ -11,7 +11,7 @@ This plugin lets you connect Sanity document fields to Google Cloud Translate AP
 nmp install sanity-plugin-google-translate
 ```
 
-Somewhere in your studio you should define a list of languages you want to support. One of these should be marked as the default language.
+Somewhere in your studio you should define a list of the languages you want to support. One of these should be marked as the default language. This will be the base language editors write in. The `id` field should correspond to the [language identifiers](https://cloud.google.com/translate/docs/languages) Google use.
 
 ```javascript
 // languages.js
