@@ -31,7 +31,17 @@
     "trailingComma": "es5"
   },
   "name": "sanity-plugin-google-translate",
-  "author": "Rune Botten",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sanity-io/sanity-plugin-google-translate.git"
+  },
+  "keywords": [
+    "sanity",
+    "google translate",
+    "localization",
+    "translation"
+  ],
+  "author": "Sanity.io <hello@sanity.io>",
   "module": "dist/sanity-plugin-google-translate.esm.js",
   "size-limit": [
     {
