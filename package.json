@@ -54,7 +54,7 @@
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
-    "@sanity/form-builder": "^2.10.2",
+    "@sanity/form-builder": "^2.12.2",
     "@sanity/ui": "^0.33",
     "react": "^16 || ^17",
     "react-dom": "^16 || ^17"
