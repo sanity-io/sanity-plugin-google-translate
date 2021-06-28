@@ -57,9 +57,9 @@ const localizedString = localizeInput({
 export default localizedString;
 ```
 
-`localizeInput` will take your normal Sanity schema field definition, the languages array and api key and produce a localized object field with custom buttons to translate the base language. You may also create corresponding localized versions of text or rich text fields.
+`localizeInput` takes your normal Sanity schema field definition, the languages array and api key and returns a localized object field with UI buttons to translate from the base language. You can also create corresponding localized versions of text or rich text fields, see example further down.
 
-You may then use `localizedString` as any normal schema field in your documents
+You may then use the `localizedString` field just like any normal schema field in your documents
 
 ```javascript
 // demo.js
@@ -76,7 +76,7 @@ export default {
 };
 ```
 
-And tying it all together just like any other schema definition on Sanity
+And tying it all together in a Sanity Studio
 
 ```javascript
 import schemaTypes from "all:part:@sanity/base/schema-type";
