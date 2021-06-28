@@ -8,10 +8,14 @@ import {
   Marker,
   ObjectSchemaTypeWithOptions,
   BaseSchemaType,
+  SchemaType,
 } from '@sanity/types';
 import blockTools from '@sanity/block-tools';
+import { ObjectField } from '@sanity/types/src';
 
 const blocksToHtml = require('@sanity/block-content-to-html');
+
+const DEFAULT_FILTER_FIELD = () => true
 
 const serializers = { types: {} };
 
@@ -134,6 +138,7 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
     presence,
     type,
     value,
+    filterField = DEFAULT_FILTER_FIELD,
   } = props;
 
   const toast = useToast();
@@ -203,6 +208,46 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
   const baseValue: StringOrBlocks | undefined = value && value[base.name];
   const localeFields = type.fields.slice(1, type.fields.length);
 
+  const renderField = (field: ObjectField<SchemaType>, index:number) => {
+    let level = props.level || 0;
+    if (level && index !== 0) {
+      level = level + 1;
+    }
+
+    if (!filterField(type, field) || field.type.hidden) {
+      return null
+    }
+
+    return (
+      <Flex align="flex-end">
+        <Box flex={2}>
+          <FormBuilderInput
+            readOnly={false}
+            key={field.name}
+            type={field.type}
+            level={level}
+            value={value && value[field.name]}
+            onChange={patchEvent => handleFieldChange(field, patchEvent)}
+            path={[field.name]}
+            focusPath={focusPath}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            compareValue={compareValue}
+          />
+        </Box>
+        <Box marginLeft={2}>
+          <Button
+            disabled={isTranslating}
+            mode="ghost"
+            type="button"
+            onClick={() => translate([field.name])}
+            text="Translate"
+          />
+        </Box>
+      </Flex>
+    );
+  };
+
   return (
     <Fieldset
       level={props.level}
@@ -246,40 +291,7 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
         isCollapsible={true}
         isCollapsed={true}
       >
-        {localeFields.map((field, i) => {
-          let level = props.level || 0;
-          if (level && i !== 0) {
-            level = level + 1;
-          }
-          return (
-            <Flex align="flex-end">
-              <Box flex={2}>
-                <FormBuilderInput
-                  readOnly={false}
-                  key={field.name}
-                  type={field.type}
-                  level={level}
-                  value={value && value[field.name]}
-                  onChange={patchEvent => handleFieldChange(field, patchEvent)}
-                  path={[field.name]}
-                  focusPath={focusPath}
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  compareValue={compareValue}
-                />
-              </Box>
-              <Box marginLeft={2}>
-                <Button
-                  disabled={isTranslating}
-                  mode="ghost"
-                  type="button"
-                  onClick={() => translate([field.name])}
-                  text="Translate"
-                />
-              </Box>
-            </Flex>
-          );
-        })}
+        {localeFields.map((field, index) => renderField(field, index))}
       </Fieldset>
     </Fieldset>
   );
