@@ -44,6 +44,7 @@
     }
   ],
   "devDependencies": {
+    "@sanity/form-builder": "^2.12.2",
     "@sanity/types": "^2.12.2",
     "@size-limit/preset-small-lib": "^4.10.2",
     "@types/react": "^17.0.5",
