@@ -1325,6 +1325,19 @@
     "get-random-values" "^1.2.0"
     "lodash" "^4.17.15"
 
+"@sanity/client@2.11.0":
+  "integrity" "sha512-ruP1iUwItXcGrJQo8aLWibeeNbgbkCUosUu9Y/W1ZR4D1qrL+KN459HTh6+f+WJQz/puT2sCzGUX7qg+r187fw=="
+  "resolved" "https://registry.npmjs.org/@sanity/client/-/client-2.11.0.tgz"
+  "version" "2.11.0"
+  dependencies:
+    "@sanity/eventsource" "2.2.6"
+    "@sanity/generate-help-url" "2.2.6"
+    "@sanity/observable" "2.0.9"
+    "deep-assign" "^2.0.0"
+    "get-it" "^5.0.3"
+    "make-error" "^1.3.0"
+    "object-assign" "^4.1.1"
+
 "@sanity/client@2.8.0":
   "integrity" "sha512-S/EYj4SOJ4OMOOULCjNE2moFsb4h2Vy9zV/v4dOappal+GBxafJ9E/J4+qLhkMZqd2hTfECfawjshuoUUo+L+g=="
   "resolved" "https://registry.npmjs.org/@sanity/client/-/client-2.8.0.tgz"
@@ -1338,10 +1351,10 @@
     "make-error" "^1.3.0"
     "object-assign" "^4.1.1"
 
-"@sanity/color@^2.0.15", "@sanity/color@^2.0.17":
-  "integrity" "sha512-gLh5rhM1+jtPqIyRwYHr4ZT4iyrKGlVMoYeJD6mlcIWPkMppJ+FYzkViwCvByQnQ9Ez/nL9kq2dz1IDXvsHaHg=="
-  "resolved" "https://registry.npmjs.org/@sanity/color/-/color-2.0.17.tgz"
-  "version" "2.0.17"
+"@sanity/color@^2.0.15", "@sanity/color@^2.0.17", "@sanity/color@^2.1.2":
+  "integrity" "sha512-6WE14xdSWMPfWHGs9kzZyK3eCUVc37U94R4hpqTwMbAYyxvpq6KEEqWh3lsrqrxUk97MQCoWyzCpfGjMmOfpCw=="
+  "resolved" "https://registry.npmjs.org/@sanity/color/-/color-2.1.2.tgz"
+  "version" "2.1.2"
 
 "@sanity/eventsource@2.2.6":
   "integrity" "sha512-RcrX/+sQwHfvNO3Fpie9rwi4RKTjaxN2BmaoJ9VayrbkL+12Tf1wcqwerPfR+VRA15c7NnLlDFCdu+iKpa7Tng=="
@@ -1527,7 +1540,17 @@
     "@types/lodash" "^4.14.149"
     "lodash" "^4.17.15"
 
-"@sanity/types@^2.0.0", "@sanity/types@^2.10.0", "@sanity/types@2.10.0":
+"@sanity/types@^2.0.0", "@sanity/types@^2.12.2":
+  "integrity" "sha512-/0hVB2WQkwJ2f9YQyOMwnLNn3AxcWS0csqvwWtC1tUkYi5hDvnGKnJH4x4N6U4eayZGyX869uDBK0D6Af6zRnA=="
+  "resolved" "https://registry.npmjs.org/@sanity/types/-/types-2.12.2.tgz"
+  "version" "2.12.2"
+  dependencies:
+    "@sanity/client" "2.11.0"
+    "@sanity/color" "^2.1.2"
+    "@types/react" "^17.0.0"
+    "rxjs" "^6.5.3"
+
+"@sanity/types@2.10.0":
   "integrity" "sha512-x4QpPD1yLttBx+aN4XNtfV/N4ioTEtTuZNaK05PMkiEoiXafjzFhokhWUhX71ONqFn99pKDhfvvuPQEvKZZfqw=="
   "resolved" "https://registry.npmjs.org/@sanity/types/-/types-2.10.0.tgz"
   "version" "2.10.0"
