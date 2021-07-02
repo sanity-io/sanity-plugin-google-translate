@@ -139,6 +139,7 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
     type,
     value,
     filterField = DEFAULT_FILTER_FIELD,
+    readOnly = false
   } = props;
 
   const toast = useToast();
@@ -208,7 +209,7 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
   const baseValue: StringOrBlocks | undefined = value && value[base.name];
   const localeFields = type.fields.slice(1, type.fields.length);
 
-  const renderField = (field: ObjectField<SchemaType>, index:number) => {
+  const renderField = (field: ObjectField<SchemaType>, index:number, readOnly:boolean) => {
     let level = props.level || 0;
     if (level && index !== 0) {
       level = level + 1;
@@ -222,7 +223,7 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
       <Flex align="flex-end">
         <Box flex={2}>
           <FormBuilderInput
-            readOnly={false}
+            readOnly={readOnly}
             key={field.name}
             type={field.type}
             level={level}
@@ -237,7 +238,7 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
         </Box>
         <Box marginLeft={2}>
           <Button
-            disabled={isTranslating}
+            disabled={isTranslating || readOnly}
             mode="ghost"
             type="button"
             onClick={() => translate([field.name])}
@@ -270,11 +271,13 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
             onFocus={onFocus}
             onBlur={onBlur}
             compareValue={compareValue} // handles "edited" status
+            readOnly={readOnly}
+            presence={presence}
           />
         </Box>
         <Box marginLeft={2}>
           <Button
-            disabled={isTranslating}
+            disabled={isTranslating || readOnly}
             mode="ghost"
             type="button"
             onClick={async () => translate(localeFields.map(f => f.name))}
@@ -291,7 +294,7 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
         isCollapsible={true}
         isCollapsed={true}
       >
-        {localeFields.map((field, index) => renderField(field, index))}
+        {localeFields.map((field, index) => renderField(field, index, readOnly))}
       </Fieldset>
     </Fieldset>
   );
