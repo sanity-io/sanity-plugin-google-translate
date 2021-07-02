@@ -219,8 +219,6 @@ export const TranslationInput = React.forwardRef((props: Props, ref) => {
       return null
     }
 
-    console.log(readOnly);
-
     return (
       <Flex align="flex-end">
         <Box flex={2}>
