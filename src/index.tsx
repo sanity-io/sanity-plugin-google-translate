@@ -1,4 +1,5 @@
 import React from 'react';
+import {studioTheme, ThemeProvider} from '@sanity/ui'
 import { TranslationInput } from './TranslateInput';
 
 export type Locale = {
@@ -9,16 +10,18 @@ export type Locale = {
 
 export type InputOptions = {
   name: string;
+  title: string;
   type: any;
   languages: Locale[];
   apiKey: string;
 };
 
 export const localizeInput = (options: InputOptions) => {
-  const { name, type, languages } = options;
+  const { name, title, type, languages } = options;
   return {
     type: 'object',
     name,
+    title,
     fields: languages
       .sort((a, b) => {
         if (a.isDefault === true) return -1;
@@ -32,7 +35,10 @@ export const localizeInput = (options: InputOptions) => {
         })
       ),
     inputComponent: (props: any) => (
+      <ThemeProvider theme={studioTheme}>
+
       <TranslationInput {...props} apiKey={options.apiKey} />
+      </ThemeProvider>
     ),
   };
 };
