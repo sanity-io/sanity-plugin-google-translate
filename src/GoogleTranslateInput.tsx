@@ -6,13 +6,14 @@ import sanityClient from 'part:@sanity/base/client'
 import {withDocument} from 'part:@sanity/form-builder'
 
 import React, {useState, useCallback} from 'react'
-import {useToast, Card, Flex, Stack, Text} from '@sanity/ui'
+import {useToast} from '@sanity/ui'
 import {useUnsetInputComponent, NestedFormBuilder} from '@nrk/sanity-plugin-nrkno-odd-utils'
 
-import {PatchEvent, setIfMissing, set, unset} from '@sanity/form-builder/PatchEvent'
+import {PatchEvent, set, unset} from '@sanity/form-builder/PatchEvent'
 
 import Feedback from './Feedback'
 import FieldInput from './FieldInput'
+import {htmlDecode} from './helpers/htmlDecode'
 import {extractLanguageFromCode} from './helpers/extractLanguageFromCode'
 
 type FieldNameLangPair = {
