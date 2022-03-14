@@ -10,7 +10,8 @@
     "prepublishOnly": "pinst --disable && sanipack build && sanipack verify",
     "postpublish": "pinst --enable",
     "lint": "eslint \".\"",
-    "lint:fix": "eslint \".\" --fix"
+    "lint:fix": "eslint \".\" --fix",
+    "test": ""
   },
   "husky": {
     "hooks": {
@@ -45,7 +46,8 @@
     "sanipack": "^2.1.0"
   },
   "peerDependencies": {
-    "react": "^17.0.0"
+    "react": "^17.0.0",
+    "lodash": "^4.17.21"
   },
   "prettier": {
     "semi": false,
