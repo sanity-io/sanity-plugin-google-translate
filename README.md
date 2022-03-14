@@ -1,117 +1,89 @@
-# Sanity + Google Translate = 🤩
+# sanity-plugin-google-translate
 
-This plugin lets you connect Sanity document fields to Google Cloud Translate API, giving you instant machine translations for 108 languages and counting! Enable it for all of them! ...or just the ones you need.
+This plugin lets you connect Sanity fields to Google Cloud Translate API, giving you instant machine translations for 108 languages and counting! Enable it for all of them! ...or just the ones you need.
 
-![longer demo](https://user-images.githubusercontent.com/38528/123015423-33e5c100-d37d-11eb-9204-809cb01e82e0.gif)
-
-
-## Usage
+## Installation
 
 ```
-npm install sanity-plugin-google-translate
+sanity install google-translate
 ```
 
-Somewhere in your studio you should define a list of the languages you want to support. One of these should be marked as the default language. This will be the base language editors write in. The `id` field should correspond to the [language identifiers](https://cloud.google.com/translate/docs/languages) Google use.
+## Configuration
 
-```javascript
-// languages.js
+The Google Translate plugin is designed to work with [field-level translated objects](https://www.sanity.io/docs/localization#cd568b11a09c) as a Custom Input Component to add a superset of features – automated machine translation.
+
+These objects should be registered in the way recommended by the [@sanity/language-filter plugin](https://www.npmjs.com/package/@sanity/language-filter).
+
+Adding the Translation buttons requires adding an `inputComponent` and API key to the object's schema. See this example of a localized string object below.
+
+Note: This will not translate Portable Text content, as that schema type should not be mapped over multiple times in a single document. If you need multiple languages of Portable Text, you are best to use [document-level translation](https://github.com/sanity-io/document-internationalization).
+
+### Example: Add Google Translate to all localized `string` objects
+
+```js
+import GoogleTranslateInput from 'sanity-plugin-google-translate'
+
 const languages = [
-  {
-    id: 'en',
-    title: 'English',
-    isDefault: true,
-  },
-  {
-    id: 'es',
-    title: 'Spanish',
-  },
-  {
-    id: 'fr',
-    title: 'French',
-  },
+  { id: 'en', title: 'English', isDefault: true },
+  { id: 'es', title: 'Spanish' },
+  { id: 'fr', title: 'French' },
 ];
 
-export default languages
-
-```
-
-With that in place you use the `localizeInput` helper from this module to define localized versions of schema types, such as strings, texts or even rich texts.
-
-```javascript
-// localizedString.js
-import { localizeInput } from 'sanity-plugin-google-translate';
-import languages from "./languages"
-
-const localizedString = localizeInput({
-  name: 'localizedString',
-  type: {
-    // Here is a normal Sanity type definition
-    type: 'string',
-  },
-  languages,
-  // This is the Google Cloud Translation API Key
-  // Create this at https://console.cloud.google.com/ and see note below on security.
-  apiKey: 'AIzaSyAF4ESA6y6uu9LksDenAJk4RagStsM1CTs',
-});
-
-export default localizedString;
-```
-
-`localizeInput` takes your normal Sanity schema field definition, the languages array and api key and returns a localized object field with UI buttons to translate from the base language. You can also create corresponding localized versions of text or rich text fields, see example further down.
-
-You may then use the `localizedString` field just like any normal schema field in your documents
-
-```javascript
-// demo.js
 export default {
-  type: 'document',
-  name: 'demo',
-  fields: [
+  name: 'localizedString',
+  type: 'object',
+  // 👇 👇 👇
+  // See: https://www.sanity.io/docs/custom-input-widgets
+  inputComponent: GoogleTranslateInput,
+  options: {
+    // This API key will be bundled with your studio
+    // and so should be restricted by hostname
+    // See: https://www.sanity.io/docs/studio-environment-variables
+    apiKey: process.env.SANITY_STUDIO_GOOGLE_TRANSLATE_API_KEY,
+  },
+  // 👆 👆 👆
+  fieldsets: [
     {
-      type: 'localizedString',
-      name: 'title',
-      description: 'Title in many languages',
+      title: 'Translations',
+      name: 'translations',
+      options: {collapsible: true, collapsed: false},
     },
   ],
-};
+  fields: languages.map((lang) => ({
+    name: lang.id,
+    title: lang.title,
+    type: 'string', // or `text`, etc
+    fieldset: lang.isDefault ? null : 'translations',
+  })),
+}
 ```
 
-And tying it all together in a Sanity Studio
+### Example: Extend some localized `string` objects with Google Translate
 
-```javascript
-import schemaTypes from "all:part:@sanity/base/schema-type";
-import createSchema from "part:@sanity/base/schema-creator";
-import localizedString from "./localizedString"
-import demo from "./demo"
+Alternatively, you could selectively extend specific uses of `localizedString`, by registering another object to your schema which uses it as a base. This is helpful if you only need Google Translate on specific fields.
 
-export default createSchema({
-  name: "default",
-  types: schemaTypes.concat([
-    localizedString,
-    demo
-  ])
-});
-```
+```js
+import GoogleTranslateInput from 'sanity-plugin-google-translate'
 
-### Portable Text
-Here is an example of how you can localize portable text through Google Translate. This module works great for translating the block objects that represent paragraphs in portable text. If you have custom objects in your rich text with texts on those this module cannot reach into it and translate those at this moment.
-
-```javascript
-const richText = {
-  type: "array",
-  name: "bodyText",
-  of: [{ type: "block" }, { type: "image" }],
-};
-
-const localizedBody = localizeInput({
-  type: richText,
-  name: "localizedBody",
-  languages,
-  apiKey,
-});
+export default {
+  name: 'localizedGoogleTranslateString',
+  title: 'Localized String',
+  type: 'localizedString',
+  inputComponent: GoogleTranslateInput,
+  options: {
+    apiKey: process.env.SANITY_STUDIO_GOOGLE_TRANSLATE_API_KEY,
+  },
+}
 ```
 
 ## API Key security
-By including your Google Cloud Translation API key in the schema definition it becomes part of the Studio bundle which is hosted as static files on webservers. This means someone could find your key, just like they can for google maps api keys etc that you include in other websites. To avoid others using your key you should restrict your key to hosts where your studio runs, like localhost:3333, a sanity.studio or custom domain you may be hosting at.
 
-More info at https://cloud.google.com/docs/authentication/api-keys#adding_http_restrictions
+By including your Google Cloud Translation API key in the schema definition it becomes part of the Studio bundle which is hosted as static files on webservers.
+
+To avoid others using your key you should restrict it to hosts where your studio runs, like
+
+- `http://localhost:3333/*`
+- `http://<your-project>.sanity.studio/*`
+- ...or custom domain you may be hosting the Studio
+
+[More info on adding HTTP restrictions](https://cloud.google.com/docs/authentication/api-keys#adding_http_restrictions)

@@ -1,76 +1,69 @@
 {
-  "version": "1.0.3",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
-  "engines": {
-    "node": ">=10"
-  },
+  "name": "sanity-plugin-google-translate",
+  "version": "2.0.0",
+  "description": "Translate your content with Google Translate directly from your Sanity Studio!",
+  "main": "lib/GoogleTranslateInput.js",
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
+    "build": "sanipack build",
+    "watch": "sanipack build --watch",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable && sanipack build && sanipack verify",
+    "postpublish": "pinst --enable",
+    "lint": "eslint \".\"",
+    "lint:fix": "eslint \".\" --fix",
+    "test": ""
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "npm run lint:fix"
     }
   },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "name": "sanity-plugin-google-translate",
   "repository": {
     "type": "git",
     "url": "git@github.com:sanity-io/sanity-plugin-google-translate.git"
   },
   "keywords": [
     "sanity",
-    "google translate",
-    "localization",
-    "translation"
+    "sanity-plugin"
   ],
   "author": "Sanity.io <hello@sanity.io>",
-  "module": "dist/sanity-plugin-google-translate.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/sanity-plugin-google-translate.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/sanity-plugin-google-translate.esm.js",
-      "limit": "10 KB"
-    }
-  ],
+  "license": "MIT",
+  "dependencies": {
+    "@nrk/sanity-plugin-nrkno-odd-utils": "^1.0.3",
+    "@sanity/base": "^2.23.2",
+    "@sanity/form-builder": "^2.23.2",
+    "@sanity/ui": "^0.37.2",
+    "husky": "^7.0.1",
+    "prop-types": "^15.8.1"
+  },
   "devDependencies": {
-    "@sanity/form-builder": "^2.12.2",
-    "@sanity/types": "^2.12.2",
-    "@size-limit/preset-small-lib": "^4.10.2",
-    "@types/react": "^17.0.5",
-    "husky": "^6.0.0",
-    "size-limit": "^4.10.2",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.2.0",
-    "typescript": "^4.2.4"
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-sanity": "^5.1.0",
+    "eslint-plugin-react": "^7.28.0",
+    "pinst": "^2.1.6",
+    "prettier": "^2.5.1",
+    "sanipack": "^2.1.0"
   },
   "peerDependencies": {
-    "@sanity/form-builder": "^2.12.2",
-    "react": "^16 || ^17",
-    "react-dom": "^16 || ^17"
+    "react": "^17.0.0",
+    "lodash": "^4.17.21"
   },
-  "dependencies": {
-    "@sanity/ui": "^0.36.17",
-    "@sanity/block-content-to-html": "^2.0.0"
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": false,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "parser": "sanipack/babel/eslint-parser",
+    "extends": [
+      "sanity",
+      "sanity/react",
+      "prettier"
+    ],
+    "ignorePatterns": [
+      "lib/**/"
+    ]
   }
 }
