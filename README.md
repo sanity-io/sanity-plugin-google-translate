@@ -2,6 +2,8 @@
 
 This plugin lets you connect Sanity fields to Google Cloud Translate API, giving you instant machine translations for 108 languages and counting! Enable it for all of them! ...or just the ones you need.
 
+https://user-images.githubusercontent.com/9684022/158199868-5426b7dd-8439-406f-bf16-661c4bf060a0.mov
+
 ## Installation
 
 ```
@@ -24,10 +26,10 @@ Note: This will not translate Portable Text content, as that schema type should 
 import GoogleTranslateInput from 'sanity-plugin-google-translate'
 
 const languages = [
-  { id: 'en', title: 'English', isDefault: true },
-  { id: 'es', title: 'Spanish' },
-  { id: 'fr', title: 'French' },
-];
+  {id: 'en', title: 'English', isDefault: true},
+  {id: 'es', title: 'Spanish'},
+  {id: 'fr', title: 'French'},
+]
 
 export default {
   name: 'localizedString',
