@@ -42,6 +42,8 @@ export default {
     // and so should be restricted by hostname
     // See: https://www.sanity.io/docs/studio-environment-variables
     apiKey: process.env.SANITY_STUDIO_GOOGLE_TRANSLATE_API_KEY,
+    // (Optional) Format of the translation, either 'html' (default) or 'text'. Text will preserve line breaks in text inputs.
+    format: 'html'
   },
   // 👆 👆 👆
   fieldsets: [
