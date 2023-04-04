@@ -7,11 +7,9 @@ This plugin lets you connect Sanity fields to Google Cloud Translate API, giving
 
 ```
 npm install --save sanity-plugin-google-translate
-```
 
 or
 
-```
 yarn add sanity-plugin-google-translate
 ```
 
