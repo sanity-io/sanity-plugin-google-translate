@@ -25,6 +25,16 @@ All notable changes to this project will be documented in this file. See
 
 - force new release ([7af61d9](https://github.com/sanity-io/sanity-plugin-google-translate/commit/7af61d93a0348c63011b2391cf4df83555eb16b1))
 
+## [3.0.0](https://github.com/sanity-io/sanity-plugin-google-translate/compare/v2.0.0...v3.0.0) (2023-04-04)
+
+### ⚠ BREAKING CHANGES
+
+- First new version of v3-compatible plugin
+
+### Features
+
+- force new release ([7af61d9](https://github.com/sanity-io/sanity-plugin-google-translate/commit/7af61d93a0348c63011b2391cf4df83555eb16b1))
+
 ## [2.0.0](https://github.com/sanity-io/sanity-plugin-google-translate/compare/v1.0.0...v2.0.0) (2023-04-04)
 
 ### ⚠ BREAKING CHANGES
