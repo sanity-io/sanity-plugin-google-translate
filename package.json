@@ -1,69 +1,96 @@
 {
   "name": "sanity-plugin-google-translate",
-  "version": "2.0.0",
-  "description": "Translate your content with Google Translate directly from your Sanity Studio!",
-  "main": "lib/GoogleTranslateInput.js",
+  "version": "3.0.0",
+  "description": "Translate your content with Google Translate directly from your Sanity Studio",
+  "keywords": [
+    "sanity",
+    "sanity-plugin"
+  ],
+  "homepage": "https://github.com/sanity-io/sanity-plugin-google-translate#readme",
+  "bugs": {
+    "url": "https://github.com/sanity-io/sanity-plugin-google-translate/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sanity-io/sanity-plugin-google-translate.git"
+  },
+  "license": "MIT",
+  "author": "Sanity.io <hello@sanity.io>",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "source": "./src/index.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.esm.js",
+      "default": "./dist/index.esm.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "sanity.json",
+    "src",
+    "v2-incompatible.js"
+  ],
   "scripts": {
-    "build": "sanipack build",
-    "watch": "sanipack build --watch",
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable && sanipack build && sanipack verify",
-    "postpublish": "pinst --enable",
-    "lint": "eslint \".\"",
-    "lint:fix": "eslint \".\" --fix",
-    "test": ""
+    "build": "run-s clean && plugin-kit verify-package --silent && pkg-utils build --strict && pkg-utils --strict",
+    "clean": "rimraf dist",
+    "format": "prettier --write --cache --ignore-unknown .",
+    "link-watch": "plugin-kit link-watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "run-s build",
+    "watch": "pkg-utils watch --strict",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint:fix"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:sanity-io/sanity-plugin-google-translate.git"
-  },
-  "keywords": [
-    "sanity",
-    "sanity-plugin"
-  ],
-  "author": "Sanity.io <hello@sanity.io>",
-  "license": "MIT",
   "dependencies": {
-    "@nrk/sanity-plugin-nrkno-odd-utils": "^1.0.3",
-    "@sanity/base": "^2.23.2",
-    "@sanity/form-builder": "^2.23.2",
-    "@sanity/ui": "^0.37.2",
-    "husky": "^7.0.1",
-    "prop-types": "^15.8.1"
+    "@sanity/icons": "^2.2.2",
+    "@sanity/incompatible-plugin": "^1.0.4",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-sanity": "^5.1.0",
-    "eslint-plugin-react": "^7.28.0",
-    "pinst": "^2.1.6",
-    "prettier": "^2.5.1",
-    "sanipack": "^2.1.0"
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@sanity/pkg-utils": "^2.2.13",
+    "@sanity/plugin-kit": "^3.1.7",
+    "@sanity/semantic-release-preset": "^4.1.0",
+    "@types/react": "^18.0.31",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-sanity": "^6.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.7",
+    "prettier-plugin-packagejson": "^2.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
+    "rimraf": "^4.4.1",
+    "sanity": "^3.8.1",
+    "semantic-release": "^21.0.1",
+    "styled-components": "^5.3.9",
+    "typescript": "^5.0.3"
   },
   "peerDependencies": {
-    "react": "^17.0.0",
-    "lodash": "^4.17.21"
+    "react": "^18",
+    "sanity": "^3"
   },
-  "prettier": {
-    "semi": false,
-    "printWidth": 100,
-    "bracketSpacing": false,
-    "singleQuote": true
-  },
-  "eslintConfig": {
-    "parser": "sanipack/babel/eslint-parser",
-    "extends": [
-      "sanity",
-      "sanity/react",
-      "prettier"
-    ],
-    "ignorePatterns": [
-      "lib/**/"
-    ]
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
