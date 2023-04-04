@@ -5,6 +5,23 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.0 (2023-04-04)
+
+### ⚠ BREAKING CHANGES
+
+- First new version of v3-compatible plugin
+
+### Features
+
+- begin v3 upgrade ([86646ed](https://github.com/sanity-io/sanity-plugin-google-translate/commit/86646ed26e69325b2c78561b9135986b4cca6e57))
+- complete input, readme, update plugin-kit ([0901d62](https://github.com/sanity-io/sanity-plugin-google-translate/commit/0901d622b29f82ad10a727ef017833bcd2ffd187))
+- rap up work on new plugin ([91561fa](https://github.com/sanity-io/sanity-plugin-google-translate/commit/91561fa1ac6a99380cf2c1b2ef16ba744bceb086))
+
+### Bug Fixes
+
+- build settings ([15a48ed](https://github.com/sanity-io/sanity-plugin-google-translate/commit/15a48ede35d7cf582c7d3e89d0bfe5fa45d76445))
+- remove old/temp files ([f85ad9b](https://github.com/sanity-io/sanity-plugin-google-translate/commit/f85ad9bc9072bff330289b9842bf3508c93cc917))
+
 ## [1.0.2](https://github.com/SimeonGriggs/sanity-plugin-utils/compare/v1.0.1...v1.0.2) (2023-02-09)
 
 ### Bug Fixes
