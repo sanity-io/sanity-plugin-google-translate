@@ -69,6 +69,8 @@ export default function GoogleTranslateInput(props: ObjectInputProps) {
       setIsTranslating(true)
 
       const url = new URL(`https://translation.googleapis.com/language/translate/v2`)
+      const {format} = type?.options ?? {}
+      if (format) url.searchParams.set(`format`, format)
       url.searchParams.set(`key`, apiKey)
       url.searchParams.set(`q`, config.content)
 
