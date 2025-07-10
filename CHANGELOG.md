@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/sanity-io/sanity-plugin-google-translate/compare/v3.0.0...v3.0.1) (2025-07-10)
+
+### Bug Fixes
+
+- **deps:** allow studio v4 peer dep ranges ([91a003c](https://github.com/sanity-io/sanity-plugin-google-translate/commit/91a003c01d86a181665807e3585c3f230816f78a))
+
 ## [3.0.0](https://github.com/sanity-io/sanity-plugin-google-translate/compare/v2.0.0...v3.0.0) (2023-04-04)
 
 ### ⚠ BREAKING CHANGES
