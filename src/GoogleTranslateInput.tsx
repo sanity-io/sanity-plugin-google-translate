@@ -7,7 +7,7 @@ import {getLanguageFromMember} from './helpers/getLanguageFromMember'
 import {extractLanguageFromCode} from './helpers/extractLanguageFromCode'
 import {htmlDecode} from './helpers/htmlDecode'
 
-export default function GoogleTranslateInput(props: ObjectInputProps) {
+export function GoogleTranslateInput(props: ObjectInputProps) {
   const {renderDefault, members, onChange, value} = props
   const {apiKey} = props.schemaType.options
 
