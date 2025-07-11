@@ -1,4 +1,3 @@
-> This is a **Sanity Studio v3** plugin.
 # sanity-plugin-google-translate
 
 This plugin lets you connect Sanity fields to Google Cloud Translate API, giving you instant machine translations for 108 languages and counting! Enable it for all of them! ...or just the ones you need.
