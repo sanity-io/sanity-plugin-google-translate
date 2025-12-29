@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3](https://github.com/sanity-io/sanity-plugin-google-translate/compare/v3.0.2...v3.0.3) (2025-12-29)
+
+### Bug Fixes
+
+- update package.json and package-lock.json to support Sanity v5 ([#27](https://github.com/sanity-io/sanity-plugin-google-translate/issues/27)) ([b3eaeee](https://github.com/sanity-io/sanity-plugin-google-translate/commit/b3eaeeeb032da5666bce955ac2f84473d6b147d5))
+
 ## [3.0.2](https://github.com/sanity-io/sanity-plugin-google-translate/compare/v3.0.1...v3.0.2) (2025-07-10)
 
 ### Bug Fixes
