@@ -1,5 +1,12 @@
 # sanity-plugin-google-translate
 
+> ⚠️ **Repository moved**
+>
+> `@sanity/orderable-document-list` is now maintained in the [sanity-io/plugins](https://github.com/sanity-io/plugins) monorepo at [`plugins/sanity-plugin-google-translate/`](https://github.com/sanity-io/plugins/tree/main/plugins/sanity-plugin-google-translate).
+>
+> Please open issues and PRs in the monorepo. This repository is archived.
+
+
 This plugin lets you connect Sanity fields to Google Cloud Translate API, giving you instant machine translations for 108 languages and counting! Enable it for all of them! ...or just the ones you need.
 
 ## Installation
