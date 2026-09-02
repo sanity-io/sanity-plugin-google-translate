@@ -54,7 +54,7 @@
   "dependencies": {
     "@sanity/icons": "^3.7.4",
     "@sanity/incompatible-plugin": "^1.0.5",
-    "@sanity/ui": "^2.16.4"
+    "@sanity/ui": "^3.5.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
